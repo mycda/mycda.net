@@ -1246,15 +1246,13 @@ document.addEventListener('htmx:afterSwap', function (event) {
     }
 
     if (target.id === 'migration-content-outlet-body') {
-        // Rewrite SWF embed paths from demos-page-relative (../wp-content/...) to homepage-relative (wp-content/...)
-        target.querySelectorAll('embed[src^="../wp-content/"], object[data^="../wp-content/"]').forEach(function (el) {
-            var attr = el.hasAttribute('src') ? 'src' : 'data';
-            el.setAttribute(attr, el.getAttribute(attr).replace(/^\.\.\//, ''));
+        // Autoplay any demo videos swapped into the outlet (the autoplay attribute
+        // doesn't fire for <video> inserted via innerHTML; trigger it manually).
+        target.querySelectorAll('video[autoplay]').forEach(function (v) {
+            v.muted = true;
+            var p = v.play();
+            if (p && p.catch) p.catch(function () {});
         });
-        // Re-trigger Ruffle to polyfill any newly-inserted SWF embeds
-        if (window.RufflePlayer && window.RufflePlayer.newest) {
-            try { window.RufflePlayer.newest().polyfill(); } catch (e) {}
-        }
         scrollOutletToHashOrFragment(target, requestElt);
     }
 });
