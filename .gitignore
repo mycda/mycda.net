@@ -1,0 +1,8 @@
+*.DS_Store
+*.sql
+*.sql.gz
+debug.log
+wflogs/
+.idea/
+.vscode/
+node_modules/

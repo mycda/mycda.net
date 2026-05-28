@@ -1,0 +1,57 @@
+.wpcf7 {
+  color: #000;
+}
+.wpcf7 .flx {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .wpcf7 .flx {
+    flex-flow: wrap;
+  }
+}
+.wpcf7 .w {
+  width: 100%;
+  padding-left: 10px;
+}
+.wpcf7 .w2 {
+  width: 50%;
+  padding-left: 10px;
+}
+@media (max-width: 768px) {
+  .wpcf7 .w2 {
+    width: 100% !important;
+  }
+}
+.wpcf7 label {
+  text-indent: 0;
+  padding: 10px 0;
+}
+.wpcf7 input,
+.wpcf7 textarea {
+  margin-top: 10px !important;
+}
+.wpcf7 textarea {
+  resize: none;
+  height: 175px;
+}
+.wpcf7 input[type="submit"] {
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(65,64,64,0.5);
+  line-height: 1;
+  text-transform: capitalize;
+  font-weight: normal;
+  margin-right: 0 !important;
+}
+.wpcf7 .g-recaptcha {
+  display: flex;
+  justify-content: center;
+}
+.wpcf7 .ajax-loader {
+  width: 100% !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 10px !important;
+  display: block !important;
+}
