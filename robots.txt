@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /wp-content/uploads/wpcf7_uploads/
+Disallow: /wp-includes/
+Disallow: /ruffle/
+
+Sitemap: https://mycda.net/sitemap.xml
