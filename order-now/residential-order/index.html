@@ -805,15 +805,9 @@ var simulateClick = function (elem) {
 };</script><section class="vc_section"><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">
 <div class="wpcf7 no-js" id="wpcf7-f189-p134-o1" lang="en-US" dir="ltr">
 <div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
-<form action="https://formspree.io/f/REPLACE_WITH_CDA_FORMSPREE_ID" method="post" class="wpcf7-form init" aria-label="Contact form" novalidate="novalidate" data-status="init">
+<form action="https://script.google.com/macros/s/AKfycbx23G4ujp3CIUqhtBK_Q0Z9u1ceqPMmXijfwZ7JmIlWXVzCdSrhCnxKPygIEArS3KOe/exec" method="post" target="cda_form_sink" class="wpcf7-form" aria-label="Order form" onsubmit="return cdaSubmit(this);">
+<input type="hidden" name="form-source" value="residential-order">
 <div style="display: none;">
-<input type="hidden" name="_wpcf7" value="189" />
-<input type="hidden" name="_wpcf7_version" value="5.7.7" />
-<input type="hidden" name="_wpcf7_locale" value="en_US" />
-<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f189-p134-o1" />
-<input type="hidden" name="_wpcf7_container_post" value="134" />
-<input type="hidden" name="_wpcf7_posted_data_hash" value="" />
-<input type="hidden" name="_wpcf7_recaptcha_response" value="" />
 </div>
 <div class="flx">
 	<div class="w">
@@ -918,6 +912,21 @@ var simulateClick = function (elem) {
 	</div>
 </div><div class="wpcf7-response-output" aria-hidden="true"></div>
 </form>
+<iframe name="cda_form_sink" style="display:none" title="submission target"></iframe>
+<div id="cda-thanks" style="display:none;margin:16px 0;padding:22px 20px;background:#eef4fb;border:1px solid #00457c;border-radius:6px;color:#00457c;font-weight:600;text-align:center;">
+Thank you &mdash; your request has been submitted. A Central District Alarm representative will be in touch shortly.<br>For immediate help, call <a href="tel:3146472001">314-647-2001</a>.
+</div>
+<script>
+function cdaSubmit(form){
+  setTimeout(function(){
+    form.style.display='none';
+    var t=document.getElementById('cda-thanks');
+    t.style.display='block';
+    t.scrollIntoView({behavior:'smooth',block:'center'});
+  },250);
+  return true;
+}
+</script>
 </div>
 </div></div></div></div></section>
 			</div>
@@ -975,14 +984,6 @@ var simulateClick = function (elem) {
 		</section><!-- /.footer -->
 
 	</div>
-	
-<script type='text/javascript' src='../../wp-content/plugins/contact-form-7/includes/swv/js/index.js@ver=5.7.7' id='swv-js'></script>
-<script type='text/javascript' id='contact-form-7-js-extra'>
-/* <![CDATA[ */
-var wpcf7 = {"api":{"root":"https:\/\/www.mycda.net\/wp-json\/","namespace":"contact-form-7\/v1"}};
-/* ]]> */
-</script>
-<script type='text/javascript' src='../../wp-content/plugins/contact-form-7/includes/js/index.js@ver=5.7.7' id='contact-form-7-js'></script>
 <script type='text/javascript' id='rtrar.appLocal-js-extra'>
 /* <![CDATA[ */
 var rtafr = {"rules":""};
@@ -992,12 +993,6 @@ var rtafr = {"rules":""};
 <script type='text/javascript' src='../../wp-includes/js/dist/vendor/wp-polyfill-inert.min.js@ver=3.1.2' id='wp-polyfill-inert-js'></script>
 <script type='text/javascript' src='../../wp-includes/js/dist/vendor/regenerator-runtime.min.js@ver=0.13.11' id='regenerator-runtime-js'></script>
 <script type='text/javascript' src='../../wp-includes/js/dist/vendor/wp-polyfill.min.js@ver=3.15.0' id='wp-polyfill-js'></script>
-<script type='text/javascript' id='wpcf7-recaptcha-js-extra'>
-/* <![CDATA[ */
-var wpcf7_recaptcha = {"sitekey":"6Lc70YkUAAAAANS_qcZrWzTUn5-7oX4Bgn2J_7qv","actions":{"homepage":"homepage","contactform":"contactform"}};
-/* ]]> */
-</script>
-<script type='text/javascript' src='../../wp-content/plugins/contact-form-7/modules/recaptcha/index.js@ver=5.7.7' id='wpcf7-recaptcha-js'></script>
 <script type='text/javascript' src='../../wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js@ver=5.6' id='wpb_composer_front_js-js'></script>
   </body>
 </html>
