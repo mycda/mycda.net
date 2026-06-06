@@ -518,7 +518,26 @@ body.custom-background { background-color: #777777; background-image: url("wp-co
     color:black !important;
     font-weight:bold;
 }
-</style><style type="text/css" data-type="vc_shortcodes-custom-css">.vc_custom_1547487463033{background-image: url(wp-content/uploads/2018/11/connectwork.png@id=276) !important;}.vc_custom_1541479579766{background-color:#000000 !important;}.vc_custom_1541479641467{background-color:#000000 !important;}.vc_custom_1541479703472{background-color:#000000 !important;}.vc_custom_1541479936938{background-color:#000000 !important;}.vc_custom_1541483017498{background-color:#000000 !important;}.vc_custom_1541480123995{background-color:#000000 !important;}.vc_custom_1541480181859{background-color:#000000 !important;}</style><noscript><style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript>  </head>
+</style><style type="text/css" data-type="vc_shortcodes-custom-css">.vc_custom_1547487463033{background-image: url(wp-content/uploads/2018/11/connectwork.png@id=276) !important;}.vc_custom_1541479579766{background-color:#000000 !important;}.vc_custom_1541479641467{background-color:#000000 !important;}.vc_custom_1541479703472{background-color:#000000 !important;}.vc_custom_1541479936938{background-color:#000000 !important;}.vc_custom_1541483017498{background-color:#000000 !important;}.vc_custom_1541480123995{background-color:#000000 !important;}.vc_custom_1541480181859{background-color:#000000 !important;}</style><noscript><style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript>
+<style id="cda-shell-layout">
+/* CDA shell layout fixes (2026-06-06): the htmx swap target lacks a Bootstrap
+   .container, so WPBakery rows' -15px margins bled to the screen edge. Give the
+   outlet container behaviour matching .container widths, tame residual overflow,
+   and keep demo media/widgets inside the column on small screens. */
+#migration-content-outlet-body{
+    width:100%; margin-left:auto; margin-right:auto;
+    padding-left:15px; padding-right:15px; box-sizing:border-box;
+}
+@media (min-width:768px){ #migration-content-outlet-body{ max-width:750px; } }
+@media (min-width:992px){ #migration-content-outlet-body{ max-width:970px; } }
+@media (min-width:1200px){ #migration-content-outlet-body{ max-width:1170px; } }
+html, body{ overflow-x:hidden; }
+#migration-content-outlet-body img,
+#migration-content-outlet-body video,
+#migration-content-outlet-body svg,
+#migration-content-outlet-body .cda-keypad-wrap{ max-width:100%; height:auto; }
+</style>
+  </head>
   <body class="home page-template-default page page-id-5 custom-background theme_layout wpb-js-composer js-comp-ver-5.6 vc_responsive" data-site-root="mycda" data-page-type="home" data-page-slug="home">
 	<script id="site-section-map" type="application/json">
 {
