@@ -6,3 +6,7 @@ wflogs/
 .idea/
 .vscode/
 node_modules/
+HANDOFF.md
+_rec/
+_keypad_preview.html
+_archive/
