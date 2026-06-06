@@ -1198,11 +1198,15 @@ function scrollOutletToHashOrFragment(outletBody, requestElt) {
     if (!frag || frag === '#') return;
     var sel = frag.charAt(0) === '#' ? frag : '#' + frag;
     var el;
-    try { el = outletBody.querySelector(sel); } catch (e) { return; }
-    if (!el) return;
+    try { el = outletBody.querySelector(sel); } catch (e) { el = null; }
+    // Fall back to the top of the freshly-loaded outlet content when the
+    // specific anchor isn't present (e.g. Internet/Radio content has no
+    // #internet-radio-residential anchor; About detail pages similar) so the
+    // loaded content is always brought into view instead of left off-screen.
+    var scrollTarget = el || outletBody;
     requestAnimationFrame(function () {
         setTimeout(function () {
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 50);
     });
 }
