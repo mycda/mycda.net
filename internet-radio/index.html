@@ -432,7 +432,16 @@ var business_idea_settings = {"hero_slider_speed":"1500","disable_animation":"1"
 <!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="https://www.mycda.net/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen"><![endif]--><style type="text/css" id="custom-background-css">
 body.custom-background { background-color: #777777; background-image: url("../wp-content/uploads/2018/11/dark_embroidery.png"); background-position: left top; background-size: auto; background-repeat: repeat; background-attachment: scroll; }
 </style>
-	<noscript><style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript>  </head>
+	<noscript><style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript>  <style id="cda-anniversary-css">
+.header .col-md-12{ position:relative; }
+.cda-anniversary{
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    margin:0; color:#ffffff; font-weight:bold; font-size:20px; line-height:1;
+    white-space:nowrap; pointer-events:none; z-index:2;
+}
+@media (max-width:991px){ .cda-anniversary{ display:none; } }
+</style>
+</head>
   <body class="page-template-default page page-id-62 page-parent custom-background theme_layout wpb-js-composer js-comp-ver-5.6 vc_responsive">
 
 	<div id="page" class="site">
@@ -456,6 +465,27 @@ body.custom-background { background-color: #777777; background-image: url("../wp
 					   </button>
 					</div>
 					
+				   <div class="cda-anniversary" aria-label="Celebrating our 80th year">80th Year</div>
+				   <script>
+				   (function () {
+				     function placeAnniversary() {
+				       var badge = document.querySelector('.cda-anniversary');
+				       var brand = document.querySelector('.site-title');
+				       var firstTab = document.querySelector('#menu-menu-2 > li');
+				       if (!badge || !brand || !firstTab) return;
+				       if (getComputedStyle(badge).display === 'none') { badge.style.left = ''; badge.style.top = ''; return; }
+				       var col = badge.offsetParent || badge.parentElement;
+				       var colRect = col.getBoundingClientRect();
+				       var brandRect = brand.getBoundingClientRect();
+				       var tabRect = firstTab.getBoundingClientRect();
+				       var gapMid = (brandRect.right + tabRect.left) / 2;
+				       badge.style.left = (gapMid - colRect.left) + 'px';
+				       badge.style.top  = (brandRect.top + brandRect.height / 2 - colRect.top) + 'px';
+				     }
+				     window.addEventListener('load', placeAnniversary);
+				     window.addEventListener('resize', placeAnniversary);
+				   })();
+				   </script>
 				   <!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					  <div class="menu-menu-2-container"><ul id="menu-menu-2" class="nav navbar-nav"><li id="menu-item-291" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-291"><a title="Home" href="/">Home</a></li>
