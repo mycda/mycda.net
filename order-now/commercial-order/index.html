@@ -809,6 +809,9 @@ var simulateClick = function (elem) {
 <div style="display: none;" aria-hidden="true">
 <input type="text" name="your-website" tabindex="-1" autocomplete="off" value="" />
 </div>
+<input type="hidden" name="cda-jsk" value="" />
+<input type="hidden" name="cda-elapsed" value="" />
+<input type="hidden" name="recaptcha-token" value="" />
 <div class="flx">
 	<div class="w">
 		<p><label>Company Name:<br />
@@ -929,15 +932,35 @@ var simulateClick = function (elem) {
 <div id="cda-thanks" style="display:none;margin:16px 0;padding:22px 20px;background:#eef4fb;border:1px solid #00457c;border-radius:6px;color:#00457c;font-weight:600;text-align:center;">
 Thank you &mdash; your request has been submitted. A Central District Alarm representative will be in touch shortly.<br>For immediate help, call <a href="tel:3146472001">314-647-2001</a>.
 </div>
+<script src="https://www.google.com/recaptcha/api.js?render=6LfhzRctAAAAAJziLqT3Y7AnVIcXXlgz9kM4G71-"></script>
 <script>
-function cdaSubmit(form){
+var CDA_SITEKEY = '6LfhzRctAAAAAJziLqT3Y7AnVIcXXlgz9kM4G71-';
+var CDA_LOAD_TIME = Date.now();
+(function(){
+  var f = document.querySelector('form.wpcf7-form');
+  if (f) { var j = f.querySelector('input[name="cda-jsk"]'); if (j) j.value = 'mycda-human'; }
+})();
+function cdaShowThanks(form){
   setTimeout(function(){
     form.style.display='none';
     var t=document.getElementById('cda-thanks');
-    t.style.display='block';
-    t.scrollIntoView({behavior:'smooth',block:'center'});
+    if(t){ t.style.display='block'; t.scrollIntoView({behavior:'smooth',block:'center'}); }
   },250);
-  return true;
+}
+function cdaSubmit(form){
+  var jsk=form.querySelector('input[name="cda-jsk"]'); if(jsk) jsk.value='mycda-human';
+  var el=form.querySelector('input[name="cda-elapsed"]'); if(el) el.value=String(Date.now()-CDA_LOAD_TIME);
+  var tf=form.querySelector('input[name="recaptcha-token"]');
+  if(tf && tf.value){ cdaShowThanks(form); return true; }
+  if(window.grecaptcha){
+    grecaptcha.ready(function(){
+      grecaptcha.execute(CDA_SITEKEY,{action:'order_form'}).then(function(token){
+        if(tf) tf.value=token; cdaShowThanks(form); form.submit();
+      });
+    });
+    return false;
+  }
+  cdaShowThanks(form); return true;
 }
 </script>
 </div>
