@@ -443,7 +443,9 @@ body.custom-background { background-color: #777777; background-image: url("../..
     position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
     margin:0; color:#ffffff; font-weight:bold; font-size:20px; line-height:1;
     white-space:nowrap; pointer-events:none; z-index:2;
+    opacity:0; transition:opacity .12s ease;          /* hidden until JS positions it (no load-time jump) */
 }
+.cda-anniversary.is-placed{ opacity:1; }
 </style>
 </head>
   <body class="page-template-default page page-id-132 page-child parent-pageid-130 custom-background theme_layout wpb-js-composer js-comp-ver-5.6 vc_responsive">
@@ -490,7 +492,18 @@ body.custom-background { background-color: #777777; background-image: url("../..
     var rightRect = rightEl.getBoundingClientRect();
     badge.style.left = ((brandRect.right + rightRect.left) / 2 - colRect.left) + 'px';
     badge.style.top  = (brandRect.top + brandRect.height / 2 - colRect.top) + 'px';
+    badge.classList.add('is-placed'); // reveal only after positioning -> eliminates the jump
   }
+  function placeSoon() { requestAnimationFrame(placeAnniversary); }
+  // Position as early as the layout exists (DOMContentLoaded), NOT on full window.load,
+  // so the badge never sits mis-placed while the hero image downloads.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', placeSoon);
+  } else {
+    placeSoon();
+  }
+  // Re-place after web fonts settle (brand width can shift) and on the usual events.
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(placeSoon); }
   window.addEventListener('load', placeAnniversary);
   window.addEventListener('resize', placeAnniversary);
 })();
